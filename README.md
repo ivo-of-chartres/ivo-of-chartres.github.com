@@ -1,4 +1,4 @@
-= Ivo of Chartres website
+# Ivo of Chartres website
 
 This is the contents of the Ivo of Chartres website.
 
