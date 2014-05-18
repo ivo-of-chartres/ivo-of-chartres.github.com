@@ -1,0 +1,32 @@
+/* MarsBar CSS style sheet */
+
+
+table {
+    border-style: none;
+}
+
+td.desc {
+    background-color: #FFD100;
+}
+
+td.val {
+    background-color: #84C4D9;
+}
+
+body {
+    font-family:  arial, helvetica, sans-serif;
+    margin: 2% 10% 0% 10%;
+    padding: 0pt;
+    border-width: 0pt;
+    background-color: #fffff5;
+}
+
+h1, h2, h3, h4, h5 {
+    color:	#C00;
+    background:	#fffff5;
+}
+		
+
+
+
+
