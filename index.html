@@ -1,8 +1,3 @@
----
-layout: default
-title: Ivo of Chartres
----
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
@@ -15,6 +10,23 @@ title: Ivo of Chartres
 <meta name="CREATED" content="20060524;10020000">
 <meta name="CHANGEDBY" content="Doc Martin">
 <meta name="CHANGED" content="20060524;10040000">
+
+<!-- javascript for commit date -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+</script>
+  <script type="text/JavaScript">
+var branch_url = "https://api.github.com/repos/ivo-of-chartres/ivo-of-chartres.github.com/git";
+$( document ).ready(function() {
+        $.getJSON(branch_url + "/refs/heads/master", function (data) {
+            sha = data.object.sha;
+            $.getJSON(branch_url + "/commits/" + sha, function (data) {
+                commit_date = new Date(data.committer.date);
+                commit_date_str = commit_date.toUTCString();
+                $( ".commit-date" ).replaceWith(commit_date_str);
+                })
+            })
+        });
+  </script>
 
 </head>
 <body>
@@ -76,13 +88,17 @@ downloaded the files.
 </p>
 
 <p>
-The current date / time stamp is: {{ site.data['commit_date'] }}
+The current date / time stamp is <b><var class="commit-date"></var></b>.
 </p>
 
 <p>
-An example citation might be
-"http://ivo-of-chartres.github.io/decretum/ivodec_4.pdf with time stamp
-{{ site.data['commit_date'] }}".
+An example citation might be:
+
+<blockquote>
+    http://ivo-of-chartres.github.io/decretum/ivodec_4.pdf with time stamp <var
+        class="commit-date"></var></b>.
+</blockquote>
+
 </p>
 
 <h2>Contents:</h2>
