@@ -22,8 +22,14 @@ $( document ).ready(function() {
         $.getJSON(branch_url + "/refs/heads/master", function (data) {
             sha = data.object.sha;
             $.getJSON(branch_url + "/commits/" + sha, function (data) {
-                commit_date = new Date(data.committer.date);
-                commit_date_str = commit_date.toUTCString();
+                var d = new Date(data.committer.date);
+                var commit_date_str =
+                    d.getFullYear() +"-"+
+                    ("0" + (d.getMonth()+1)).slice(-2) +"-"+
+                    ("0" + d.getDate()).slice(-2) + " " +
+                    ("0" + d.getHours()).slice(-2) + ":" +
+                    ("0" + d.getMinutes()).slice(-2) + ":" +
+                    ("0" + d.getSeconds()).slice(-2);
                 $( ".commit-date" ).replaceWith(commit_date_str);
                 })
             })
