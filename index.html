@@ -20,16 +20,14 @@
 var branch_url = "https://api.github.com/repos/ivo-of-chartres/ivo-of-chartres.github.com/git";
 $( document ).ready(function() {
         $.getJSON(branch_url + "/refs/heads/master", function (data) {
-            sha = data.object.sha;
+            var sha = data.object.sha;
             $.getJSON(branch_url + "/commits/" + sha, function (data) {
                 var d = new Date(data.committer.date);
                 var commit_date_str =
                     d.getUTCFullYear() +"-"+
                     ("0" + (d.getUTCMonth()+1)).slice(-2) +"-"+
-                    ("0" + d.getUTCDate()).slice(-2) + " " +
-                    ("0" + d.getUTCHours()).slice(-2) + ":" +
-                    ("0" + d.getUTCMinutes()).slice(-2) + ":" +
-                    ("0" + d.getUTCSeconds()).slice(-2) + " UTC";
+                    ("0" + d.getUTCDate()).slice(-2) + " / " +
+                    sha.slice(0, 5);
                 $( ".commit-date" ).replaceWith(commit_date_str);
                 })
             })
@@ -79,20 +77,20 @@ the care of Przemysław Nowak of Warsaw (p-nowak@gmx.de).
 </p>
 
 <p>
-If you cite the documents on this website, please give the date / time
+If you cite the documents on this website, please give the date / revision
 stamp of the website at the time you downloaded the files.
 </p>
 
 <p>
-The current date / time stamp is <b><var class="commit-date"></var></b>.
+The current date / revision stamp is <b><var class="commit-date"></var></b>.
 </p>
 
 <p>
 An example citation might be:
 
 <blockquote>
-    http://ivo-of-chartres.github.io/decretum/ivodec_4.pdf with time stamp <var
-        class="commit-date"></var></b>.
+    http://ivo-of-chartres.github.io/decretum/ivodec_4.pdf with date /
+    revision stanp <var class="commit-date"></var></b>.
 </blockquote>
 
 </p>
